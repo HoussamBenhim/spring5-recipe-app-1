@@ -22,12 +22,23 @@ private BigDecimal amount;
 @ManyToOne
 private Recipe recipe;
 @OneToOne(fetch = FetchType.EAGER)
-private UnitOfMesasure uom;
+private UnitOfMeasure uom;
 
-public UnitOfMesasure getUom() {
+public Ingredient() {
+
+}
+
+public Ingredient(String descirption, BigDecimal amount, Recipe recipe, UnitOfMeasure uom) {
+	super();
+	this.descirption = descirption;
+	this.amount = amount;
+	this.recipe = recipe;
+	this.uom = uom;
+}
+public UnitOfMeasure getUom() {
 	return uom;
 }
-public void setUom(UnitOfMesasure uom) {
+public void setUom(UnitOfMeasure uom) {
 	this.uom = uom;
 }
 public Long getId() {
