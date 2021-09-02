@@ -91,7 +91,7 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
 		Recipe guacRecipe = new Recipe();
 		guacRecipe.setDescription("Perfect Guacamole");
 		guacRecipe.setPrepTime(10);
-		guacRecipe.setCookTime(0);
+		guacRecipe.setCookTime(5);
 		guacRecipe.setDifficulty(Difficulty.EASY);
 		guacRecipe.setDirections("Sprinkle with salt and lime (or lemon) juice. The acid in the lime juice will provide some balance to the richness of the avocado and will help delay the avocados from turning brown.\r\n" + 
 				"\r\n" + 
@@ -111,6 +111,38 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
 		guacRecipe.getCategories().add(americanCategory);
 		guacRecipe.getCategories().add(mexicanCategory);
 		recipes.add(guacRecipe);
+		Recipe rellenoRecipe = new Recipe();
+		rellenoRecipe.setDescription("Chile Relleno Casserole");
+		rellenoRecipe.setPrepTime(15);
+		rellenoRecipe.setCookTime(10);
+		rellenoRecipe.setDifficulty(Difficulty.EASY);
+		rellenoRecipe.setDirections("Classic chiles rellenos are green chiles, blackened and outer skin removed, stuffed with either cheese or a pork sausage picadillo, dipped in batter, fried in oil, and often served with a thin tomato sauce.");
+		Notes rellenoNotes = new Notes();
+		rellenoNotes.setRecipeNote("Make-Ahead Skillet Baked Spaghetti! Assemble up to a day ahead and bake when ready. Made with yellow squash, cherry tomatoes, Parmesan, fontina cheese, and basil. Yum!");
+		rellenoRecipe.setNotes(rellenoNotes);
+		rellenoRecipe.addIngredient(new Ingredient("extra virgin olive oil",new BigDecimal(1),rellenoRecipe,tableSpoonUom ));
+		rellenoRecipe.addIngredient(new Ingredient("chopped onion",new BigDecimal(1),rellenoRecipe, TeaSpoonUom ));
+		rellenoRecipe.addIngredient(new Ingredient("garlic, minced",new BigDecimal(4),rellenoRecipe,PintUom ));
+		rellenoRecipe.addIngredient(new Ingredient("tomatoes, whole or diced",new BigDecimal(1),rellenoRecipe,OunceUom ));
+		rellenoRecipe.getCategories().add(americanCategory);
+		recipes.add(rellenoRecipe);
+		
+		
+		Recipe SpaghettiRecipe = new Recipe();
+		SpaghettiRecipe.setDescription("Make-Ahead Skillet Baked Spaghetti");
+		SpaghettiRecipe.setPrepTime(19);
+		SpaghettiRecipe.setCookTime(20);
+		SpaghettiRecipe.setDifficulty(Difficulty.MODERATE);
+		SpaghettiRecipe.setDirections("Prep this skillet pasta in the morning before you leave – or even the night before -- and pop it in the oven when you're home from work, your kid's soccer practice, the last beach run of the season, or whatever activities have filled your day.");
+		Notes SpaghettiNotes = new Notes();
+		SpaghettiNotes.setRecipeNote("Our chile relleno casserole recipe is full of flavor thanks to Cotija cheese, chorizo, blackened green chiles, and a light tomato sauce. It’s a lot like the chiles rellenos you know and love...only easier!");
+		SpaghettiRecipe.setNotes(SpaghettiNotes);
+		SpaghettiRecipe.addIngredient(new Ingredient("spaghetti",new BigDecimal(1),rellenoRecipe,tableSpoonUom ));
+		SpaghettiRecipe.addIngredient(new Ingredient("olive oil",new BigDecimal(1),rellenoRecipe, TeaSpoonUom ));
+		SpaghettiRecipe.addIngredient(new Ingredient("Parmesan",new BigDecimal(4),rellenoRecipe,PintUom ));
+		SpaghettiRecipe.addIngredient(new Ingredient("salt, divided",new BigDecimal(1),rellenoRecipe,OunceUom ));
+		SpaghettiRecipe.getCategories().add(mexicanCategory);
+		recipes.add(SpaghettiRecipe);
 		
 		return recipes;
 	}
