@@ -22,6 +22,7 @@ public class NotesToNotesCommandConverter implements Converter<Notes, NotesComma
 		}
 		NotesCommand notesCommand = new NotesCommand();
 		notesCommand.setId(source.getId());
+		notesCommand.setRecipeNote(source.getRecipeNote());
 		return notesCommand;
 	}
 	
