@@ -10,13 +10,7 @@ import lombok.Synchronized;
 
 @Component
 public class CategoryCommandToCategoryConverter implements Converter<CategoryCommand, Category>{
-	private final RecipeCommandToRecipeConverter recipeConverter;
 	
-	
-	public CategoryCommandToCategoryConverter(RecipeCommandToRecipeConverter recipeConverter) {
-		super();
-		this.recipeConverter = recipeConverter;
-	}
 
 
 	@Synchronized
@@ -29,9 +23,7 @@ public class CategoryCommandToCategoryConverter implements Converter<CategoryCom
 		Category cat = new Category();
 		cat.setId(source.getId());
 		cat.setDescription(source.getDescription());
-		if(source.getRecipesCommand()!=null && source.getRecipesCommand().size()>0) {
-			source.getRecipesCommand().stream().forEach(recipeCommand-> cat.getRecipes().add(recipeConverter.convert(recipeCommand)));
-		}
+
 		return cat;
 	}
 	

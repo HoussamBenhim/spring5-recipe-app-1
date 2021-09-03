@@ -10,14 +10,8 @@ import lombok.Synchronized;
 
 @Component
 public class NotesToNotesCommandConverter implements Converter<Notes, NotesCommand>{
-	private final RecipeToRecipeCommandConverter recipeConverter;
 	
 	
-	public NotesToNotesCommandConverter(RecipeToRecipeCommandConverter recipeConverter) {
-		super();
-		this.recipeConverter = recipeConverter;
-	}
-
 
 	@Synchronized
 	@Nullable
@@ -28,7 +22,6 @@ public class NotesToNotesCommandConverter implements Converter<Notes, NotesComma
 		}
 		NotesCommand notesCommand = new NotesCommand();
 		notesCommand.setId(source.getId());
-		notesCommand.setRecipeCommand(recipeConverter.convert(source.getRecipe()));
 		return notesCommand;
 	}
 	
