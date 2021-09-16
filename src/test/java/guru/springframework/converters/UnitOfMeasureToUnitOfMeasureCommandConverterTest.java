@@ -34,7 +34,7 @@ class UnitOfMeasureToUnitOfMeasureCommandConverterTest {
 		UnitOfMeasureCommand uomCommand = uomConverter.convert(uom);
 		assertNotNull(uomCommand);
 		assertEquals(ID, uom.getId());
-		assertEquals(DESCRIPTION , uomCommand.getUom());
+		assertEquals(DESCRIPTION , uomCommand.getUomCommand());
 	}
 
 }

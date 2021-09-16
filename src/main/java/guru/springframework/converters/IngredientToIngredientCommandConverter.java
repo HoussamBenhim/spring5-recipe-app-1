@@ -28,6 +28,9 @@ public class IngredientToIngredientCommandConverter implements Converter<Ingredi
 		}
 		IngredientCommand ingredientCommand = new IngredientCommand();
 		ingredientCommand.setId(source.getId());
+		if(source.getRecipe() != null) {
+			ingredientCommand.setRecipeId(source.getRecipe().getId());
+		}
 		ingredientCommand.setAmount(source.getAmount());
 		ingredientCommand.setDescirption(source.getDescirption());
 		ingredientCommand.setUomCommand(uomConverter.convert(source.getUom()));

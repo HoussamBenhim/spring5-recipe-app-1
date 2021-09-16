@@ -29,7 +29,7 @@ class UnitOfMeasureCommandToUnitOfMeasureConverterTest {
 	public void testConvert() {
 		UnitOfMeasureCommand command = new UnitOfMeasureCommand();
 		command.setId(ID);
-		command.setUom(UOM);
+		command.setUomCommand(UOM);
 		UnitOfMeasure unitOfMeasure = converter.convert(command);
 		assertNotNull(unitOfMeasure);
 		assertEquals(ID, unitOfMeasure.getId());

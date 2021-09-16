@@ -22,7 +22,7 @@ public class UnitOfMeasureCommandToUnitOfMeasureConverter implements Converter<U
 		}
 		UnitOfMeasure uom = new UnitOfMeasure();
 		uom.setId(command.getId());
-		uom.setUom(command.getUom());
+		uom.setUom(command.getUomCommand());
 		return uom;
 	}
 	

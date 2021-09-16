@@ -50,7 +50,7 @@ class IngredientToIngredientCommandConverterTest {
 		assertEquals(AMOUNT, ingredientCommand.getAmount());
 		assertEquals(UnitOfMeasureCommand.class, ingredientCommand.getUomCommand().getClass());
 		assertEquals(ID, ingredientCommand.getUomCommand().getId());
-		assertEquals(UOM, ingredientCommand.getUomCommand().getUom());
+		assertEquals(UOM, ingredientCommand.getUomCommand().getUomCommand());
 	
 	}
 

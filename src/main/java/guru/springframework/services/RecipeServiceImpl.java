@@ -22,8 +22,8 @@ public class RecipeServiceImpl implements RecipeService {
 	private final RecipeToRecipeCommandConverter recipeToRecipeCommandConverter;
 	private final RecipeRepository recipeRepository;
 
-	public RecipeServiceImpl(RecipeRepository recipeRepository
-			,RecipeCommandToRecipeConverter recipeCommandToRecipeConverter,
+	public RecipeServiceImpl(RecipeRepository recipeRepository,
+			RecipeCommandToRecipeConverter recipeCommandToRecipeConverter,
 			RecipeToRecipeCommandConverter recipeToRecipeCommandConverter) {
 		super();
 		this.recipeRepository = recipeRepository;
@@ -41,20 +41,32 @@ public class RecipeServiceImpl implements RecipeService {
 	@Override
 	public Recipe findById(Long l) {
 		Optional<Recipe> optionalRecipe = recipeRepository.findById(l);
-		if(!optionalRecipe.isPresent()) {
-			throw new RuntimeException("No reicpe with id of : "+ l + "found!");
+		if (!optionalRecipe.isPresent()) {
+			throw new RuntimeException("No reicpe with id of : " + l + "found!");
 		}
 		return optionalRecipe.get();
 	}
-	
-	 @Override
-	 @Transactional
-	 public RecipeCommand saveRecipeCommand(RecipeCommand command) {
-	        Recipe detachedRecipe = recipeCommandToRecipeConverter.convert(command);
 
-	        Recipe savedRecipe = recipeRepository.save(detachedRecipe);
-	        log.debug("Saved RecipeId:" + savedRecipe.getId());
-	        return recipeToRecipeCommandConverter.convert(savedRecipe);
-	 }
+	@Override
+	public RecipeCommand findCommandById(Long id) {
+		return recipeToRecipeCommandConverter.convert(findById(id));
+	}
+
+	@Override
+	@Transactional
+	public RecipeCommand saveRecipeCommand(RecipeCommand command) {
+		Recipe detachedRecipe = recipeCommandToRecipeConverter.convert(command);
+
+		Recipe savedRecipe = recipeRepository.save(detachedRecipe);
+		log.debug("Saved RecipeId:" + savedRecipe.getId());
+		return recipeToRecipeCommandConverter.convert(savedRecipe);
+	}
+
+	@Override
+	public void deletById(Long l) {
+		recipeRepository.deleteById(l);
+	}
 	
+	
+
 }

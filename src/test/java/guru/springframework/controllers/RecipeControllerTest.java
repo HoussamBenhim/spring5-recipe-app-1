@@ -1,6 +1,8 @@
 package guru.springframework.controllers;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
@@ -18,6 +20,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import guru.springframework.domain.Recipe;
+import guru.springframework.repositories.RecipeRepository;
 import guru.springframework.services.RecipeService;
 
 class RecipeControllerTest {
@@ -43,8 +46,13 @@ class RecipeControllerTest {
 		mockMcv.perform(get("/recipe/show/1"))
 		.andExpect(status().isOk())
 		.andExpect(view().name("recipes/show"))
-		.andExpect(model().attributeExists("recipe"))
-		;
+		.andExpect(model().attributeExists("recipe"));
 	}
-
+	@Test
+	public void testDeleteById()throws Exception {
+		mockMcv.perform(get("recipe/1/delete"))
+				.andExpect(status().is3xxRedirection())
+				.andExpect(view().name("redirect:/"));
+		verify(recipeService,times(1)).deletById(1L);
+	}
 }

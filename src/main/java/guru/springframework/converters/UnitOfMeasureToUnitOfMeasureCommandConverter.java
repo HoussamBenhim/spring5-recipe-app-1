@@ -20,7 +20,7 @@ public class UnitOfMeasureToUnitOfMeasureCommandConverter implements Converter<U
 			}
 			UnitOfMeasureCommand  uomc = new UnitOfMeasureCommand();
 			uomc.setId(source.getId());
-			uomc.setUom(source.getUom());
+			uomc.setUomCommand(source.getUom());
 		return uomc;
 	}
 	
